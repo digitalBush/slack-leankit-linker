@@ -1,0 +1,40 @@
+{
+  "name": "slack-leankit-linker",
+  "version": "1.0.0",
+  "description": "Slack App for unfurling LeanKit links",
+  "main": "src/index.js",
+  "dependencies": {
+    "@slack/client": "^3.9.0",
+    "@slack/events-api": "^1.0.1",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "html-entities": "^1.2.0",
+    "htmlparser": "^1.7.7",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "slapp": "^2.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-leankit": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BanditSoftware/slack-leankit-linker.git"
+  },
+  "keywords": [
+    "slack",
+    "leankit",
+    "unfurl",
+    "links"
+  ],
+  "author": "Matt Dunlap <matt.dunlap@leankit.com>",
+  "bugs": {
+    "url": "https://github.com/BanditSoftware/slack-leankit-linker/issues"
+  },
+  "homepage": "https://github.com/BanditSoftware/slack-leankit-linker#readme"
+}

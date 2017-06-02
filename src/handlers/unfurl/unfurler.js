@@ -27,14 +27,14 @@ module.exports = ( app ) => {
 	}
 
 	function unfurlBoard( log, link ) {
-		return leankit( link.subdomain, link.token ).board( link.boardId ).then( board => {
+		return leankit( link.subdomain, link.token ).board( link.boardId ).get().then( board => {
 			link.attachment = responses.board( board );
 
 			log.info( `Unfurled board (${ link.subdomain }/${ link.boardId }): ${ link.attachment.fallback }` );
 
 			return link;
 		} ).catch( err => {
-			if ( err.statusCode === 403 ) {
+			if ( err.statusCode === 403 || err.statusCode === 404 ) {
 				log.info( `No read permissions for board: ${ link.subdomain }/${ link.boardId }` );
 				link.attachment = {
 					text: `The LeanKit Linker does not have permissions to see that board (${ link.boardId }). Contact your LeanKit administrator if you’d like the board to be visible to all slack users in your organization.`

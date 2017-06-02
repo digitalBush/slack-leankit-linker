@@ -19,4 +19,4 @@ EXPOSE 4390
 # Runs tini to handle zombie process reaping and pass signals to Node correctly
 COPY .docker /
 ENTRYPOINT [ "/sbin/tini", "--", "/usr/local/bin/entry.sh" ]
-CMD [ "node", "./index.js" ]
+CMD [ "node", "./src/index.js" ]

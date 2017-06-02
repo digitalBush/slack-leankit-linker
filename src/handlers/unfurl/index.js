@@ -25,8 +25,9 @@ module.exports = ( app ) => {
 			.map( parseLink ) // Extract domain and board/card ids from links
 			.map( link => Object.assign( link, { token } ) )
 			.map( link => unfurl( eventLog, link ) ) // Generate unfurl attachments for each link
-			.filter( Boolean ) // Remove links we can't unfurl
-		).then( links => {
+		)
+		.then( links => links.filter( Boolean ) )
+		.then( links => {
 			if ( !links.length ) {
 				eventLog.info( "Nothing to unfurl!" );
 				return null;
@@ -37,7 +38,7 @@ module.exports = ( app ) => {
 				return _unfurls;
 			}, {} );
 
-			const slack = new WebClient( msg.meta.bot_token || msg.meta.app_token );
+			const slack = new WebClient( msg.meta.app_token );
 			return slack.chat.unfurl( event.message_ts, event.channel, unfurls ).then( result => {
 				eventLog.info( `Successful Unfurling: ${ linkCount( links ) }` );
 			} );

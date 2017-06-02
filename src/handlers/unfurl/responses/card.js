@@ -1,13 +1,12 @@
 /* eslint-disable max-lines */
-const htmlToSlackMarkdown = require( "./html-to-slack-markdown" );
 
-module.exports = ( { leankit } ) => {
+module.exports = ( { leankit, slackHtml } ) => {
 	return function buildCardRepresentation( card ) {
 		const attachment = {
 			title_link: `https://${ card.subdomain }.leankit.com/card/${ card.cardId }`,
 			title: `${ card.type.title }: ${ card.title }`,
 			fallback: `${ card.board.title } > ${ card.lane.title } > ${ card.type.title }: ${ card.title }`,
-			text: card.description && htmlToSlackMarkdown( card.description ),
+			text: card.description && slackHtml( card.description ),
 			color: card.color, // card.blockedStatus.isBlocked ? "danger" : "good", // "warning" "danger" "#ff00ff"
 			fields: [ {
 				title: "On Board",

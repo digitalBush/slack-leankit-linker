@@ -1,5 +1,4 @@
 /* eslint-disable max-lines */
-const request = require( "request-promise" );
 const responsesFactory = require( "./responses" );
 
 module.exports = ( app ) => {
@@ -7,7 +6,7 @@ module.exports = ( app ) => {
 	const responses = responsesFactory( app );
 
 	function unfurlCard( log, link ) {
-		return leankit( link.subdomain ).card( link.cardId ).get().then( card => {
+		return leankit( link.subdomain, link.token ).card( link.cardId ).get().then( card => {
 			const attachment = link.attachment = responses.card( card );
 			log.info( `Unfurled card (${ link.subdomain }/${ link.cardId }): ${ attachment.fallback }` );
 			return link;
@@ -28,7 +27,7 @@ module.exports = ( app ) => {
 	}
 
 	function unfurlBoard( log, link ) {
-		return leankit( link.subdomain ).board( link.boardId ).then( board => {
+		return leankit( link.subdomain, link.token ).board( link.boardId ).then( board => {
 			link.attachment = responses.board( board );
 
 			log.info( `Unfurled board (${ link.subdomain }/${ link.boardId }): ${ link.attachment.fallback }` );

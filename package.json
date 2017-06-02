@@ -12,14 +12,15 @@
     "htmlparser": "^1.7.7",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "slapp": "^2.4.1"
+    "slapp": "^2.4.1",
+    "slapp-context-beepboop": "^1.4.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-leankit": "^3.0.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

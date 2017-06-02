@@ -1,7 +1,6 @@
 const slappFactory = require( "slapp" );
 const express = require( "express" );
 const contextFactory = require( "slapp-context-beepboop" );
-const convoFactory = require( "slapp-convo-beepboop" );
 
 module.exports = ( app ) => {
 	const api = {
@@ -12,8 +11,7 @@ module.exports = ( app ) => {
 				verify_token: app.config.slackVerificationToken,
 				log: true,
 				colors: true,
-				context: contextFactory(),
-				convo_store: convoFactory()
+				context: contextFactory()
 			} );
 
 			app.server = app.slapp.attachToExpress( express() );

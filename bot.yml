@@ -1,0 +1,8 @@
+name: leankit-linker
+description: LeanKit bot for unfurling links in Slack
+avatar: resources/leankit-logo_512.jpg
+background: resources/background.jpg
+config:
+  - name: LEANKIT_API_TOKEN
+    info: Bearer token for the user in LeanKit with view permissions
+    type: secret
